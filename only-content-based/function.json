@@ -1,0 +1,36 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "cb/user/{u_id:int}/article/{art_id:int}"
+    },
+    {
+      "name": "metadata",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "azurefunction/articles_metadata.csv",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+  },
+  {
+      "name": "embedding",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "azurefunction/embedding_reduce.npy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+  },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
